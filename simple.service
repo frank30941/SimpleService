@@ -1,0 +1,30 @@
+[Unit]
+Description=Simple server daemon
+#Before=
+After=network.target
+#Wants=
+#Requires=
+
+[Service]
+#Type=simple #simple, forking, oneshot, dbus, notify, idle
+#RemainAfterExit=no 
+#EnvironmentFile=
+# -(like try catch), +(root), !, !!
+#ExecStartPre=
+ExecStart=+simple.sh
+#ExecStartPost=
+#ExecStop=
+#ExecStopPost=
+#ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+#no, always, on-success, on-failure, on-abnormal, on-watchdog, on-abort
+Restart=on-failure
+RestartSec=42s
+#TimeoutStartSec=infinity #20s, 10s....
+#TimeoutStopSec=infinity
+#TimeoutSec=infinity #both TimeoutStartSec TimeoutStopSec
+
+
+
+[Install]
+WantedBy=multi-user.target
